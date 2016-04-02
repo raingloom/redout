@@ -27,5 +27,15 @@ function Component:requireComponentOfType( componentClass, ... )
 end
 
 
+function Component:assertComponentOfType( componentClass )
+  for component in pairs( self.gameObject.components ) do
+    if component:isInstanceOf( componentClass ) then
+      return component
+    end
+  end
+  error( 'No component of '..tostring( componentClass )..' type found')
+end
+
+
 
 return Component

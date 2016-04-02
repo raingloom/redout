@@ -65,6 +65,11 @@ function love.update( dt )
     player.body:applyForce( player.body:getLocalVector( 0, handling.acceleration*dt ) )
   elseif love.keyboard.isDown'down' or love.keyboard.isDown's' then
     player.body:applyForce( player.body:getLocalVector( 0, -handling.breaking*dt ) )
+  elseif love.keyboard.isDown'delete' then
+    player.body:setPosition( 0, 0 )
+    player.body:setAngle( 0 )
+    player.body:setAngularVelocity( 0 )
+    player.body:setLinearVelocity( 0, 0 )
   end
   
   world:update( dt * gameSpeed )

@@ -1,4 +1,4 @@
-local Body = require'class''Body'
+local Body = require'class.Component':subclass'Body'
 
 
 function Body:initialize( world, ... )
@@ -6,7 +6,7 @@ function Body:initialize( world, ... )
 end
 
 
-function Body:onAddedToGameObject( object )
+function Body:onAddedToGameObject()
   self:assertSingle()
 end
 
