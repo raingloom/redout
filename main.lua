@@ -28,7 +28,7 @@ local player = {
 
 
 function love.load()
-  package.loaded.class = require'lib.middleclass'
+  --package.loaded.class = require'lib.middleclass'
   
   world = love.physics.newWorld( 0, 0, true )
   player.body = love.physics.newBody( world, 0, 0, 'dynamic' )
@@ -59,13 +59,13 @@ function love.update( dt )
   dt = dt*gameSpeed
   if love.keyboard.isDown'left' or love.keyboard.isDown'a' then
     player.body:applyTorque( handling.torquePerSec*dt )
-  elseif love.keyboard.isDown'right' or love.keyboard.isDown'd' then
+  end if love.keyboard.isDown'right' or love.keyboard.isDown'd' then
     player.body:applyTorque( -handling.torquePerSec*dt )
-  elseif love.keyboard.isDown'up' or love.keyboard.isDown'w' then
-    player.body:applyForce( player.body:getLocalVector( 0, handling.acceleration*dt ) )
-  elseif love.keyboard.isDown'down' or love.keyboard.isDown's' then
-    player.body:applyForce( player.body:getLocalVector( 0, -handling.breaking*dt ) )
-  elseif love.keyboard.isDown'delete' then
+  end if love.keyboard.isDown'up' or love.keyboard.isDown'w' then
+    player.body:applyForce( player.body:getWorldVector( 0, handling.acceleration*dt ) )
+  end if love.keyboard.isDown'down' or love.keyboard.isDown's' then
+    player.body:applyForce( player.body:getWorldVector( 0, -handling.breaking*dt ) )
+  end if love.keyboard.isDown'delete' then
     player.body:setPosition( 0, 0 )
     player.body:setAngle( 0 )
     player.body:setAngularVelocity( 0 )
