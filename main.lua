@@ -28,7 +28,7 @@ local player = {
 
 
 function love.load()
-  --package.loaded.class = require'lib.middleclass'
+  package.loaded.class = require'lib.middleclass'
   
   world = love.physics.newWorld( 0, 0, true )
   player.body = love.physics.newBody( world, 0, 0, 'dynamic' )
